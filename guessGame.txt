@@ -1,0 +1,85 @@
+SET a greeding window to the user, PRINT welcome to the most amazing gussing game
+DISPLAY diffeculty levels, ask the user to DETERMINE the diffeculty he would like to play
+
+//user chooses the difficulty.
+
+CASE based on diffeculty
+    IF User choose "very easy" THEN 
+        SET maxValue to 10
+        SET maxNumberOfAttempts to infinity
+        RETURN SEQUENCE playGame 
+        PRINT 1
+     
+    ELSE IF user choose "easy" THEN 
+        SET maxValue to 10
+        SET maxNumberOfAttempts to 5 
+        PRINT 2   
+
+    ELSE IF user choose "medium" THEN 
+        SET maxValue to 100
+        SET maxNumberOfAttempts to 5 
+        PRINT 3
+
+    ELSE IF user choose "difficult" THEN 
+        SET maxValue to 500
+        SET maxNumberOfAttempts to 8 
+        PRINT 4
+    
+    ELSE IF user choose "very difficult" THEN 
+        SET maxValue to 1000
+        SET maxNumberOfAttempts to 9
+        PRINT 5
+    
+    ELSE 
+        SHOW message Please choose a valid diffeculty
+        RETURN to the top of the CASE
+    ENDIF
+ENDCASE
+
+
+SEQUENCE playGame READ the diffeculty READ maxNumberOfAttempts READ maxNumber THEN
+    SET valueStart with 1;
+    READ the VALUE from the input the user enter SET into variable GuessNumber
+
+    COMPUTE a rendom number, based on valueStart and maxNumber, SET the result into a variable called TargetNumber
+
+    FOR number of attempts, SET to 0, INCREMENT number of attempts UNTIL it is equel maxNumberOfAttempts THEN
+            
+        IF GuessNUmber is equel to TargetNumber THEN
+        PRINT user number of attempts
+        PRINT you guess correctly
+            
+        ELSE IF GuessNUmber is less then TargetNumber THEN
+        PRINT Your guess number is too low
+        PRINT user number of attempts
+
+        ELSE IF GuessNUmber is higher then TargetNumber THEN
+        PRINT user number of attempts
+        PRINT Your guess number is too high
+
+        ELSE SHOW error eccored please try again
+        RETURN to the top of the SEQUENCE playGame
+
+        ENDIF
+    ENDFOR
+
+        PRINT GAME OVER!! you are out of tries, Please try again.
+        RETURN SEQUENCE gameOver
+ENDSEQUENCE
+
+SEQUENCE gameOver
+
+    PRINT diffeculty level
+    PRINT user number of attempts
+    PRINT TargetNumber
+    PRINT would you like to play again? (yes / no)
+    IF user pick yes THEN
+        RETURN CASE
+    ELSE IF user pick no THEN 
+        PRINT thank you for playing the most amazing guess game!
+    ELSE 
+        PRINT error accured please try again
+        RETURN CASE
+    ENDIF
+
+ENDSEQUENCE
