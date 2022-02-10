@@ -1,47 +1,49 @@
-SET a greeding window to the user, PRINT welcome to the most amazing gussing game
-DISPLAY diffeculty levels, ask the user to DETERMINE the diffeculty he would like to play
+SEQUENCE called main THEN
+    SET a greeting window to the user, PRINT welcome to the most amazing guessing game
+    DISPLAY difficulty levels, ask the user to DETERMINE the difficulty he would like to play
+    SET maxValue EQUEL empty 
+    SET maxNumberOfAttempts EQUEL empty 
+ENDSEQUENCE
 
 //user chooses the difficulty.
+SEQUENCE called difficulty
 
-CASE based on diffeculty
     IF User choose "very easy" THEN 
         SET maxValue to 10
         SET maxNumberOfAttempts to infinity
-        RETURN SEQUENCE playGame 
-        PRINT 1
-     
+
     ELSE IF user choose "easy" THEN 
         SET maxValue to 10
-        SET maxNumberOfAttempts to 5 
-        PRINT 2   
+        SET maxNumberOfAttempts to 5   
 
     ELSE IF user choose "medium" THEN 
         SET maxValue to 100
         SET maxNumberOfAttempts to 5 
-        PRINT 3
-
+        
     ELSE IF user choose "difficult" THEN 
         SET maxValue to 500
         SET maxNumberOfAttempts to 8 
-        PRINT 4
+        
     
     ELSE IF user choose "very difficult" THEN 
         SET maxValue to 1000
         SET maxNumberOfAttempts to 9
-        PRINT 5
     
     ELSE 
-        SHOW message Please choose a valid diffeculty
-        RETURN to the top of the CASE
+        SHOW message Please choose a valid difficulty
     ENDIF
-ENDCASE
+    
+RETURN SEQUENCE playGame 
+
+ENDSEQUENCE
 
 
-SEQUENCE playGame READ the diffeculty READ maxNumberOfAttempts READ maxNumber THEN
+SEQUENCE playGame USING the difficulty USING maxNumberOfAttempts USING maxNumber THEN
     SET valueStart with 1;
-    READ the VALUE from the input the user enter SET into variable GuessNumber
 
-    COMPUTE a rendom number, based on valueStart and maxNumber, SET the result into a variable called TargetNumber
+    COMPUTE a random number, based on valueStart and maxNumber, SET the result into a variable called TargetNumber
+
+    READ the VALUE from the input the user enter SET into variable GuessNumber
 
     FOR number of attempts, SET to 0, INCREMENT number of attempts UNTIL it is equel maxNumberOfAttempts THEN
             
@@ -67,6 +69,7 @@ SEQUENCE playGame READ the diffeculty READ maxNumberOfAttempts READ maxNumber TH
         RETURN SEQUENCE gameOver
 ENDSEQUENCE
 
+
 SEQUENCE gameOver
 
     PRINT diffeculty level
@@ -74,12 +77,11 @@ SEQUENCE gameOver
     PRINT TargetNumber
     PRINT would you like to play again? (yes / no)
     IF user pick yes THEN
-        RETURN CASE
+        RETURN SEQUENCE main
     ELSE IF user pick no THEN 
         PRINT thank you for playing the most amazing guess game!
     ELSE 
         PRINT error accured please try again
-        RETURN CASE
     ENDIF
 
 ENDSEQUENCE
