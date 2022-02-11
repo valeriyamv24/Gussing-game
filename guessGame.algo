@@ -42,7 +42,7 @@ SEQUENCE difficulty USING difficulty_Level
 ENDSEQUENCE
 
 
-SEQUENCE play_Game USING max_Number_Of_Attempts USING max_Value
+SEQUENCE play_Game 
   	CALL difficulty WITH difficulty_Level RETURNING max_Number_Of_Attempts AND max_Value AND Target_Number
     SET keep_playing TO true
     SET user_number_of_attempts TO 0
