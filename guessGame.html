@@ -15,29 +15,27 @@
         <h3>Please select level diffeculty</h3>
 
         <div>
-          <input type="radio" id="veryEasy" name="diffeculty" value="Very Easy">
+          <input type="radio" id="veryEasy" name="diffeculty" value="1" onclick="difficulty(this.value)">
           <label for="veryEasy">Very Easy</label>
         <div>
-          <input type="radio" id="easy" name="diffeculty" value="Easy" >
+          <input type="radio" id="easy" name="diffeculty" value="2" onclick="difficulty(this.value)">
               <label for="easy">Easy</label>
             </div>
             
             <div>
-              <input type="radio" id="medium" name="diffeculty" value="Medium">
+              <input type="radio" id="medium" name="diffeculty" value="3" onclick="difficulty(this.value)">
               <label for="medium">Medium</label>
             </div>
 
             <div>
-                <input type="radio" id="difficult" name="diffeculty" value="Difficult">
+                <input type="radio" id="difficult" name="diffeculty" value="4" onclick="difficulty(this.value)">
                 <label for="difficult">Difficult</label>
             </div>
 
             <div>
-                <input type="radio" id="veryDifficult" name="diffeculty" value="Very Difficult">
+                <input type="radio" id="veryDifficult" name="diffeculty" value="5" onclick="difficulty(this.value)">
                 <label for="veryDifficult">Very Difficult</label>
             </div>
-
-            <button type="button" onclick="level()">START</button>
       </div>
 
         <div id="gameContennent">
