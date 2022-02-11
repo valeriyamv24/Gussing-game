@@ -1,0 +1,101 @@
+SEQUENCE main 
+    DISPLAY "welcome to the most amazing guessing game"
+    CALL difficulty WITH difficulty_Level
+    DISPLAY difficulty levels DISPLAY "please choose the difficulty level" (1=Very easy, 2=Easy, 3=Medium, 4=Difficult, 5=Very difficult)
+    SET difficulty_Level TO read user input 
+    INIT max_Value 
+    INIT max_Number_Of_Attempts 
+ENDSEQUENCE
+
+SEQUENCE difficulty USING difficulty_Level
+    IF User choose 1 THEN 
+        SET max_Value to 10
+        SET max_Number_Of_Attempts to infinity
+    ENDIF
+
+    ELSE IF user choose 2 THEN 
+        SET max_Value to 10
+        SET max_Number_Of_Attempts to 5   
+    ENDELSEIF
+
+    ELSE IF user choose 3 THEN 
+        SET max_Value to 100
+        SET max_Number_Of_Attempts to 5 
+    ENDELSEIF
+
+    ELSE IF user choose 4 THEN 
+        SET max_Value to 500
+        SET max_Number_Of_Attempts to 8 
+    ENDELSEIF
+   
+    ELSE IF user choose 5 THEN 
+        SET max_Value to 1000
+        SET max_Number_Of_Attempts to 9
+    ENDELSEIF
+
+    ELSE 
+        DISPLAY "Please choose a valid difficulty"
+    ENDELSE
+	
+    COMPUTE a random number, between 1 and max_Value, SET the result TO Target_Number
+    RETURN max_Number_Of_Attempts AND max_Value AND Target_Number
+ENDSEQUENCE
+
+
+SEQUENCE play_Game USING max_Number_Of_Attempts USING max_Value
+  	CALL difficulty WITH difficulty_Level RETURNING max_Number_Of_Attempts AND max_Value AND Target_Number
+    SET keep_playing TO true
+    SET user_number_of_attempts TO 0
+    DISPLAY "You can start guessing. The number between 1 - {limit}. You have {max_Number_Of_Attempts} tries "
+
+	WHILE keep_playing IS true
+		SET Guess_Number TO read user input
+        INCREMENT user_number_of_attempts
+        IF Guess_Number is NOT EQUAL to Target_Number THEN
+            IF user_number_of_attempts is NOT EQUAL max_Number_Of_Attempts
+                IF Guess_Number is LESS then Target_Number THEN
+                    DISPLAY user_number_of_attempts 
+                    DISPLAY "Your guess is too low"
+                ENDIF
+
+                ELSE IF Guess_Number is HIGHER then Target_Number THEN
+                    DISPLAY user_number_of_attempts
+                    DISPLAY "Your guess number is too high"
+                ENDELSEIF
+
+                ELSE
+                    DISPLAY "GAME OVER!! you are out of tries, Please try again"
+                    BREAK out of the loop
+                ENDELSE    
+            ENDIF
+
+        ELSE IF Guess_Number is EQUAL to Target_Number THEN
+            DISPLAY "Congratulations you guessed correctly"
+            DISPLAY user_number_of_attempts
+            SET keep_playing TO false
+        ENDELSEIF
+
+        ELSE 
+            DISPLAY "Errror accured please try again"
+            SET keep_playing TO false
+        ENDIF
+    ENDWHILE
+    CALL gameOver WITH user_number_of_attempts AND difficulty_level AND Target_Number
+ENDSEQUENCE
+
+
+SEQUENCE game_Over USING user_number_of_attempts AND difficulty_level AND Target_Number
+    DISPLAY difficulty_level
+    DISPLAY user_number_of_attempts
+    DISPLAY Target_Number
+    DISPLAY "Would you like to play again? (yes / no)"
+    IF user pick yes THEN
+        RETURN SEQUENCE main
+    ENDIF
+    ELSE 
+        DISPLAY "Thank you for playing the most amazing guess game!"
+    ENDIF
+ENDSEQUENCE
+
+
+CALL main()
