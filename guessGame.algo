@@ -10,7 +10,7 @@ ENDSEQUENCE
 SEQUENCE difficulty USING difficulty_Level
     IF User choose 1 THEN 
         SET max_Value to 10
-        SET max_Number_Of_Attempts to infinity
+        SET max_Number_Of_Attempts to 1000000
     ENDIF
 
     ELSE IF user choose 2 THEN 
