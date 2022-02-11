@@ -1,33 +1,59 @@
-// alert('Welcome to the most amazing gussing game')
+function main() {
+    alert('Welcome to the most amazing gussing game')
+
+    let maxValue = ""; 
+    let maxNumberOfAttempts= "" ;
+
+}
+
+
+
 
 function level() {
+
     if (document.querySelector("#veryEasy").checked){
-        let maxValue = 10;
-        let maxNumberOfAttempts = 5;
-            return maxValue, maxNumberOfAttempts; // ???return??
+        console.log("veryeasy")
+        maxValue = 10;
+        maxNumberOfAttempts = 5;
+            return maxValue, maxNumberOfAttempts;
     }
     else if (document.querySelector("#easy").checked){
-        let maxValue = 10;
-        let maxNumberOfAttempts = 5;
+        console.log("easy")
+
+        maxValue = 10;
+        maxNumberOfAttempts = 5;
+            return maxValue, maxNumberOfAttempts;
+
     }
     else if (document.querySelector("#medium").checked){
-        let maxValue = 100;
-        let maxNumberOfAttempts = 5;
+        console.log("medium")
+
+        maxValue = 100;
+        maxNumberOfAttempts = 5;
+            return maxValue, maxNumberOfAttempts;
+
     }            
     else if (document.querySelector("#difficult").checked){
-        let maxValue = 500;
-        let maxNumberOfAttempts = 8;
+        console.log("difficult")
+
+        maxValue = 500;
+        maxNumberOfAttempts = 8;
+            return maxValue, maxNumberOfAttempts;
+
     }
     else if (document.querySelector("#veryDifficult").checked){
-        let maxValue = 1000;
-        let maxNumberOfAttempts = 9;
+        console.log("verydifficult")
+        maxValue = 1000;
+        maxNumberOfAttempts = 9;
+            return maxValue, maxNumberOfAttempts;
+
     }
     else {
         alert("Error occured. Please choose a valid diffeculty")
     }
 
 }
-
+// console.log(maxValue)
 
 
 
@@ -37,12 +63,4 @@ function playGame() {
 }
 
 
-
-function getUser() {
-    const name = "Nathan";
-    const role = "Web Developer";
-    return name, role;
-  }
-
-  const user = getUser();
-    console.log(user);
+main()
