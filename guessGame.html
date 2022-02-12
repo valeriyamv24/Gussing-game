@@ -9,46 +9,37 @@
     <script src="guessGame.js"></script>
 </head>
 <body>
-    <div class="container">
-        <div>
-            <p>Please select level diffeculty</p>
-
-            <div>
-              <input type="radio" id="veryEasy" name="diffeculty" value="1" onchange="level(this.value)" >
-              <label for="veryEasy">Very Easy</label>
-            </div>
-            
-            <div>
-              <input type="radio" id="easy" name="diffeculty" value="2" onchange="level(this.value)" >
-              <label for="easy">Easy</label>
-            </div>
-            
-            <div>
-              <input type="radio" id="medium" name="diffeculty" value="3" onchange="level(this.value)" >
-              <label for="medium">Medium</label>
-            </div>
-
-            <div>
-                <input type="radio" id="difficult" name="diffeculty" value="4" onchange="level(this.value)" >
-                <label for="difficult">Difficult</label>
-            </div>
-
-            <div>
-                <input type="radio" id="veryDifficult" name="diffeculty" value="5" onchange="level(this.value)" >
-                <label for="veryDifficult">Very Difficult</label>
-            </div>
-          </div>
-
-        <h1>Guessing Game</h1>
-        <input type="text" id="userInput"> 
-        <button>GUESS</button>
-        <p id="message1">No. of Guesss : 0</p> 
-        <p id="message2">Guessed number are : </p>  
-        <p id="message3">test</p> 
+  <div class="container">
+    <div>
+      <p>Please select level diffeculty</p>
+      <div>
+        <input type="radio" id="veryEasy" name="diffeculty" value="1" onchange="difficulty(this.value)" >
+        <label for="veryEasy">Very Easy</label>
+      </div> 
+      <div>
+        <input type="radio" id="easy" name="diffeculty" value="2" onchange="difficulty(this.value)" >
+        <label for="easy">Easy</label>
+      </div>
+      <div>
+        <input type="radio" id="medium" name="diffeculty" value="3" onchange="difficulty(this.value)" >
+        <label for="medium">Medium</label>
+      </div>
+      <div>
+        <input type="radio" id="difficult" name="diffeculty" value="4" onchange="difficulty(this.value)" >
+        <label for="difficult">Difficult</label>
+      </div>
+      <div>
+        <input type="radio" id="veryDifficult" name="diffeculty" value="5" onchange="difficulty(this.value)" >
+        <label for="veryDifficult">Very Difficult</label>
+      </div>
     </div>
-
-
-
+    <div>
+      <h1>Guessing Game</h1>
+      <input type="text" id="userInput"> 
+      <button>GUESS</button>
+      <p id="message1">No. of Guesss : 0</p> 
+    </div>
+  </div>
 
 </body>
 </html>
